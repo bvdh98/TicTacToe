@@ -1,6 +1,6 @@
 <div class="card">
-    <div class="card-body">
-      Test
-    </div>
+  <div class="card-body">
+    <app-cell *ngFor="let val of cells; let i = index" [value]="val">
+    </app-cell>
+  </div>
 </div>
-

@@ -1,4 +1,10 @@
 <div class="card">
+  <h3 *ngIf="winner === 'X' || winner ==='O'">
+    Player {{ winner }} won
+  </h3>
+  <h3 *ngIf="winner === 'Tie'">
+    {{ winner }}
+  </h3>
   <div class="card-body">
     <app-cell *ngFor="let val of cells; let i = index" [value]="val" (click)="updateCell(i)">
     </app-cell>

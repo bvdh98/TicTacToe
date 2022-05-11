@@ -1,3 +1,5 @@
-<button *ngIf="!value" class="col-4 btn btn-primary">{{value}}</button>
-<button *ngIf="value === 'X'" class="col-4 btn btn-primary x-button">{{value}}</button>
-<button *ngIf="value === 'O'" class="col-4 btn btn-primary o-button">{{value}}</button>
+<button *ngIf="!value" class="col-4 btn btn-primary" [ngClass]="highlightWinner(index)">{{value}}</button>
+<button *ngIf="value === 'X'" class="col-4 btn btn-primary x-button"
+    [ngClass]="highlightWinner(index)">{{value}}</button>
+<button *ngIf="value === 'O'" class="col-4 btn btn-primary o-button"
+    [ngClass]="highlightWinner(index)">{{value}}</button>

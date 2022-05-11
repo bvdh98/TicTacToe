@@ -6,7 +6,7 @@
     {{ winner }}
   </h3>
   <div class="card-body">
-    <app-cell *ngFor="let val of cells; let i = index" [value]="val" (click)="updateCell(i)">
+    <app-cell *ngFor="let val of cells; let i = index" [value]="val" [index]="i" [winningTiles]="winningTiles" (click)="updateCell(i)">
     </app-cell>
   </div>
   <button class="btn btn-primary col-6 reset-bttn" (click)="start()">Reset</button>

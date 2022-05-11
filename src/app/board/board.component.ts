@@ -9,7 +9,7 @@ export class BoardComponent implements OnInit {
   cells: string[];
   isPlayerXTurn: boolean;
   winner: string | null;
-
+  winningTiles: number[];
   constructor() {}
 
   ngOnInit(): void {
@@ -62,6 +62,7 @@ export class BoardComponent implements OnInit {
     this.winner = this.findWinner();
   }
 
+  //if all cells are occupied return true
   isTie() {
     for (let i = 0; i < this.cells.length; i++) {
       if (this.cells[i] === null) {
@@ -72,31 +73,39 @@ export class BoardComponent implements OnInit {
   }
 
   findWinner() {
+    //8 winning scenarios
     const board = [
+      // row 1
       [0, 1, 2],
+      //row 2
       [3, 4, 5],
+      //row 3
       [6, 7, 8],
+      //col 1
       [0, 3, 6],
+      //col 2
       [1, 4, 7],
+      //col 3
       [2, 5, 8],
+      //diag
       [0, 4, 8],
+      //diag 2
       [2, 4, 6],
     ];
     for (let i = 0; i < board.length; i++) {
       const [a, b, c] = board[i];
-      console.log(a)
       if (
         this.cells[a] &&
         this.cells[a] === this.cells[b] &&
         this.cells[a] === this.cells[c]
       ) {
+        this.winningTiles = board[i];
         return this.cells[a];
       }
     }
     if (this.isTie()) {
       return 'Tie';
-    }
-    else{
+    } else {
       return null;
     }
   }
@@ -105,5 +114,6 @@ export class BoardComponent implements OnInit {
     this.cells = Array(9).fill(null);
     this.winner = null;
     this.isPlayerXTurn = true;
+    this.winningTiles = [];
   }
 }
